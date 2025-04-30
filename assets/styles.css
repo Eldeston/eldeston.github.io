@@ -1,0 +1,82 @@
+/* Root */
+
+:root{
+    --backGround: black;
+    --foreGround: rgb(255, 255, 255, 0.03125);
+}
+
+@font-face{
+    font-family: 'JetBrains';
+    src: url(JetBrainsMono-Regular.ttf);
+}
+
+/* Animations */
+
+/* Base */
+
+body{
+    margin: 0%;
+
+    font-family: 'JetBrains';
+
+    background-color: var(--backGround);
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+
+    background-color: var(--backGround);
+}
+
+nav a{
+    padding: 0 32px;
+
+    align-content: center;
+    text-decoration: none;
+
+    color: white;
+
+    transition: 1s;
+}
+
+nav a:hover{
+    background-color: rgb(0, 90, 255, 0.125);
+}
+
+h1, p{
+    color: white;
+}
+
+/* ID */
+
+/* Class */
+
+.banner{
+    height: 512px;
+    display: flex;
+
+    background-image: url("placeHolder.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.bannerContent{
+    margin: auto;
+    
+    display: flex;
+    flex-direction: row;
+}
+
+.textContent{
+    margin: auto;
+}
+
+.window{
+    margin: 64px 256px;
+    padding: 32px;
+
+    border-radius: 16px;
+
+    background-color: var(--foreGround);
+}
