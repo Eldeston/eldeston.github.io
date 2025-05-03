@@ -1,4 +1,5 @@
 const noiseScale = 2.0;
+const noiseSpeed = 0.25 * 0.001;
 
 function squared(x){
   return x * x;
@@ -26,7 +27,7 @@ function fpsCounter(x, y, z){
   text(fps, x, y);
 }
 
-function flowLine(x, y, z, w){
+function flowLine(currTime, y, z, w){
   beginShape();
 
   // Decreasing vertex size will decrease FPS
@@ -36,11 +37,13 @@ function flowLine(x, y, z, w){
   
   // Loop for calculating each vertex point
   for(let i = 0; i < width; i += vertexSize){
-    let noise0 = perlinCustom(i * vertexStep + x * 0.125 + z);
-    let noise1 = perlinCustom(i * vertexStep - x * 0.25 + z);
-    let noise2 = perlinCustom(i * vertexStep * 2.0 + x + z);
+    let currStep = i * vertexStep;
+
+    let noise0 = perlinCustom(currStep + currTime * 0.125 + z);
+    let noise1 = perlinCustom(currStep - currTime * 0.25 + z);
+    let noise2 = perlinCustom(currStep * 2.0 + currTime + z);
   
-    vertex(i, height / 2 - map((noise0 + noise1 + noise2) * y, -3, 3, -256, 256) + w);
+    vertex(i, map((noise0 + noise1 + noise2) * y, -3, 3, 0, height) + w);
   }
   
   endShape();
@@ -55,8 +58,7 @@ function setup(){
 function draw(){
   background(0, 0, 0, 255);
   
-  let secondTime = millis() * 0.001;
-  secondTime *= 0.25;
+  let secondTime = millis() * noiseSpeed;
 
   noFill();
   strokeWeight(2);
