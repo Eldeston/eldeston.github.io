@@ -27,13 +27,10 @@ function fpsCounter(x, y, z){
 }
 
 function flowLine(x, y, z, w){
-  noFill();
-  stroke(255, 255, 255, 64);
-
   beginShape();
 
   // Decreasing vertex size will decrease FPS
-  const vertexSize = 8;
+  const vertexSize = 16;
   // Store vertex step as a constant to save performance
   const vertexStep = 1 / width;
   
@@ -61,9 +58,18 @@ function draw(){
   let secondTime = millis() * 0.001;
   secondTime *= 0.25;
 
+  noFill();
+  strokeWeight(2);
+
   for(let i = 0; i <= 8; i++){
+    stroke(255, 128, 0, 64);
     flowLine(secondTime, 0.5 + i / 8, 0, 0);
-    flowLine(secondTime, 0.5 + i / 8, 120, 0);
+
+    stroke(0, 128, 255, 64);
+    flowLine(secondTime, 0.5 + i / 8, 111, 0);
+
+    stroke(0, 255, 0, 64);
+    flowLine(secondTime, 0.5 + i / 8, 977, 0);
   }
 
   // fpsCounter(43, 54, secondTime);

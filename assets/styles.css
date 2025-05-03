@@ -2,7 +2,7 @@
 
 :root{
     --backGround: black;
-    --foreGround: rgb(255, 255, 255, 0.03125);
+    --foreGround: rgb(128, 128, 128, 0.0625);
 }
 
 /* Miscs */
@@ -22,11 +22,22 @@
     }
 }
 
+@keyframes loopedGallery{
+    from{
+        translate: 0 0;
+    }
+
+    to{
+        translate: -150% 0;
+    }
+}
+
 /* Elements */
 
 body{
     margin: 0;
 
+    overflow-x: hidden;
     font-family: 'JetBrains';
 
     background-color: var(--backGround);
@@ -134,6 +145,32 @@ footer{
 
     width: 32px;
 }
+
+#appContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+#appContainer img{
+    width: 256px;
+}
+
+#imgContainer{
+    width: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    animation: loopedGallery 15s linear infinite;
+}
+
+#imgContainer img{
+    margin: 0 4px;
+
+    width: 50%;
+}
+
 
 /* Classes */
 
