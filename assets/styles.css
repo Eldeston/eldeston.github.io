@@ -47,12 +47,18 @@ body{
     background-color: var(--backGround);
 }
 
+hr{
+    background: linear-gradient(to top, red, yellow);
+    background-clip: text;
+    color: transparent;
+}
+
 nav{
     top: 0;
 
     width: 100%;
 
-    z-index: 100;
+    z-index: 1;
     display: flex;
     position: fixed;
     align-items: center;
@@ -178,6 +184,26 @@ footer{
     margin: 0 4px;
 
     width: 50%;
+}
+
+#theStudioContent{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+#theStudioContent img{
+    margin: 0 16px;
+    width: 512px;
+}
+
+#theStudioContent h1{
+    font-size: 512%;
+
+    background: linear-gradient(45deg, rgba(0, 0, 255, 1) 11%, rgba(0, 255, 255, 1) 100%);
+    background-clip: text;
+
+    color: transparent;
 }
 
 

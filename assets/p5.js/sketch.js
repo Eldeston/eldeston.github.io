@@ -15,7 +15,7 @@ function coordFract(x, axis){
 }
 
 function perlinCustom(x){
-  return noise(x * noiseScale) * 2.0 - 1.0;
+  return noise(x) * 2.0 - 1.0;
 }
 
 function fpsCounter(x, y, z){
@@ -28,22 +28,29 @@ function fpsCounter(x, y, z){
 }
 
 function flowLine(currTime, y, z, w){
-  beginShape();
+  // Peak crest height
+  const peakCrest = 1.0;
+  // Get half of width
+  const halfWidth = width * 0.5;
+  // Get half of height multiplied
+  const halfHeight = (height / 6) * peakCrest * y;
 
-  // Decreasing vertex size will decrease FPS
-  const vertexSize = 16;
+  // Decreasing vertex size will improve FPS
+  const vertexSize = width / 128;
   // Store vertex step as a constant to save performance
   const vertexStep = 1 / width;
+
+  beginShape();
   
   // Loop for calculating each vertex point
-  for(let i = 0; i < width; i += vertexSize){
-    let currStep = i * vertexStep;
+  for(let i = -halfWidth; i < halfWidth; i += vertexSize){
+    const currStep = (i * vertexStep + z) * noiseScale;
 
-    let noise0 = perlinCustom(currStep + currTime * 0.125 + z);
-    let noise1 = perlinCustom(currStep - currTime * 0.25 + z);
-    let noise2 = perlinCustom(currStep * 2.0 + currTime + z);
+    let noise0 = perlinCustom(currStep + currTime * 0.125);
+    let noise1 = perlinCustom(currStep - currTime * 0.25);
+    let noise2 = perlinCustom(currStep * 2.0 + currTime);
   
-    vertex(i, map((noise0 + noise1 + noise2) * y, -3, 3, 0, height) + w);
+    vertex(i, (noise0 + noise1 + noise2) * halfHeight + w);
   }
   
   endShape();
@@ -51,14 +58,13 @@ function flowLine(currTime, y, z, w){
 
 function setup(){
   createCanvas(windowWidth, windowHeight);
- 
-  background(0);
 }
 
 function draw(){
-  background(0, 0, 0, 255);
-  
   let secondTime = millis() * noiseSpeed;
+
+  background(0, 0, 0, 255);
+  translate(width * 0.5, height * 0.5);
 
   noFill();
   strokeWeight(2);
@@ -74,5 +80,5 @@ function draw(){
     flowLine(secondTime, 0.5 + i / 8, 977, 0);
   }
 
-  // fpsCounter(43, 54, secondTime);
+  fpsCounter(-width * 0.45, -height * 0.25, secondTime);
 }
