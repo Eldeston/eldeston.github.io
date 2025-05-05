@@ -57,12 +57,6 @@ body{
     background-color: var(--backGround);
 }
 
-hr{
-    background: linear-gradient(to top, red, yellow);
-    background-clip: text;
-    color: transparent;
-}
-
 nav{
     top: 0;
 
@@ -142,16 +136,6 @@ footer{
     animation: widthAnim 3s steps(40) forwards;
 }
 
-#mainContent{
-    margin: 64px 0;
-
-    height: 512px;
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-}
-
 #imgContainer{
     width: fit-content;
 
@@ -200,10 +184,6 @@ footer{
     width: 32px;
 }
 
-#cursorBlink{
-    animation: alphaAnim 1s infinite;
-}
-
 /* Classes */
 
 .window{
@@ -216,6 +196,20 @@ footer{
 .contentRow{
     display: flex;
     justify-content: space-between;
+}
+
+.cursorBlink{
+    animation: alphaAnim 1s infinite;
+}
+
+.mainContent{
+    margin: 64px 0;
+
+    height: 512px;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
 }
 
 .glassEffect{
