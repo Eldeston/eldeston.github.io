@@ -81,7 +81,7 @@ nav div a{
     background-size: 200%;
     background-position: 0%;
 
-    transition: 1s;
+    transition: 0.5s;
 }
 
 nav div a:hover{
@@ -212,7 +212,7 @@ footer{
     border-radius: 16px;
 }
 
-.footerRow{
+.contentRow{
     display: flex;
     justify-content: space-between;
 }

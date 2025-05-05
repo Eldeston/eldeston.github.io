@@ -72,9 +72,9 @@ function draw(){
   strokeWeight(4);
 
   // Loop and calculate 8 lines for 3 bands of lines
-  for(let i = 0; i <= 8; i++){
+  for(let i = -2; i < 2; i++){
     // Store wave size increment as a constant
-    const sizeIncrement = 0.5 + i / 8;
+    const sizeIncrement = 1.0 + i / 4;
 
     // Set red stroke color with transparency
     stroke(255, 128, 0, 64);
@@ -90,6 +90,6 @@ function draw(){
   }
 
   // Reset stroke color
-  stroke(0, 0, 0, 0);
-  fpsCounter(0, height * 0.125, secondTime);
+  // stroke(0, 0, 0, 0);
+  // fpsCounter(0, height * 0.125, secondTime);
 }
