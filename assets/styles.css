@@ -12,7 +12,7 @@
     src: url(JetBrainsMono-Regular.ttf);
 }
 
-@keyframes typeWriter{
+@keyframes widthAnim{
     from{
         width: 0%;
     }
@@ -22,7 +22,17 @@
     }
 }
 
-@keyframes loopedGallery{
+@keyframes alphaAnim{
+    from{
+        color: transparent;
+    }
+
+    to{
+        color: white;
+    }
+}
+
+@keyframes galleryLoop{
     from{
         translate: 0 0;
     }
@@ -112,10 +122,6 @@ footer{
 
 /* IDs */
 
-#me{
-    margin: 0 16px;
-}
-
 #sketchP5{
     top: 0;
 
@@ -133,7 +139,7 @@ footer{
     overflow: hidden;
     white-space: nowrap;
 
-    animation: typeWriter 3s steps(44) forwards;
+    animation: widthAnim 3s steps(40) forwards;
 }
 
 #mainContent{
@@ -146,26 +152,6 @@ footer{
     justify-content: center;
 }
 
-#socialContainer{
-    display: flex;
-    justify-content: space-between;
-}
-
-#socialContainer img{
-    margin: 0 4px;
-
-    width: 32px;
-}
-
-#appContainer{
-    display: flex;
-    justify-content: space-between;
-}
-
-#appContainer img{
-    width: 256px;
-}
-
 #imgContainer{
     width: fit-content;
 
@@ -173,12 +159,10 @@ footer{
     flex-direction: row;
     justify-content: center;
 
-    animation: loopedGallery 15s linear infinite;
+    animation: galleryLoop 15s linear infinite;
 }
 
 #imgContainer img{
-    margin: 0 4px;
-
     width: 50%;
 }
 
@@ -202,6 +186,23 @@ footer{
     color: transparent;
 }
 
+#me{
+    margin: 0 16px;
+}
+
+#tools{
+    width: 256px;
+}
+
+#socials{
+    margin: 0 4px;
+
+    width: 32px;
+}
+
+#cursorBlink{
+    animation: alphaAnim 1s infinite;
+}
 
 /* Classes */
 

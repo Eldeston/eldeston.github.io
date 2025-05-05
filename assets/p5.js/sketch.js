@@ -19,7 +19,7 @@ function flowLine(currTime, crestHeight, z, w){
   // Get half of height multiplied
   const halfHeight = (height / 3) * crestHeight;
 
-  // Decreasing vertex size will improve FPS
+  // Decreasing vertex count will improve FPS
   const vertexCount = width / 128;
   // Store vertex step as a constant to save performance
   const vertexStep = 1 / width;
