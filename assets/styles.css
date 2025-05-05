@@ -108,10 +108,6 @@ h1, h2, p{
 
 footer{
     padding: 64px 256px;
-
-    backdrop-filter: blur(8px);
-
-    background-color: var(--foreGround);
 }
 
 /* IDs */
@@ -214,12 +210,17 @@ footer{
     padding: 64px;
 
     border-radius: 16px;
-    backdrop-filter: blur(8px);
-
-    background-color: var(--foreGround);
 }
 
 .footerRow{
     display: flex;
     justify-content: space-between;
+}
+
+.glassEffect{
+    backdrop-filter: blur(8px);
+
+    background-color: var(--foreGround);
+
+    box-shadow: -2px -2px 2px rgb(0, 0, 0, 0.125) inset, 2px 2px 2px rgb(255, 255, 255, 0.125) inset;
 }
