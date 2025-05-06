@@ -1,95 +1,75 @@
-const noiseScale = 2.0;
-const noiseSpeed = 0.5 * 0.001;
+const speed = 4.0;
+const particles = 1024;
+const noiseScale = 1 / 128;
+const noiseRotations = 1 * 3.1416;
 
-// FPS counter
-function fpsCounter(x, y, z){
-  let fps = frameCount / z;
-  let fpsG = 1.0 - exp(-fps * 0.125);
-  let fpsB = 1.0 - exp(-fps * 0.015625);
+let particleList = [];
 
-  fill(255, fpsG * 255, fpsB * 255);
-  textAlign(CENTER);
-  text(fps, x, y);
-}
-
-// Flow line using vertices
-function flowLine(currTime, crestHeight, z, w){
-  // Get half of width
-  const halfWidth = width * 0.5;
-  // Get half of height multiplied
-  const halfHeight = (height / 3) * crestHeight;
-
-  // Decreasing vertex count will improve FPS
-  const vertexCount = width / 128;
-  // Store vertex step as a constant to save performance
-  const vertexStep = 1 / width;
-
-  // Time at 1/4 speed
-  let timeFourth = currTime * 0.25;
-  // Time at 1/8 speed
-  let timeEighth = currTime * 0.125;
-
-  // Begin vertex shape
-  beginShape();
-  
-  // Loop for calculating each vertex point
-  for(let i = -halfWidth; i <= halfWidth; i += vertexCount){
-    // Get current step, can represent as the x axis of your canvas
-    const currStep = (i * vertexStep + z) * noiseScale;
-
-    // Get noise depending on the x axis
-    let noise0 = noise(currStep + timeEighth);
-    let noise1 = noise(currStep - timeFourth);
-    let noise2 = noise(currStep * 2.0 + currTime);
-  
-    // Draw vertex node
-    vertex(i, (noise0 + noise1 + noise2 - 1.5) * halfHeight + w);
+class particle{
+  constructor(position, velocity){
+    this.position = position;
+    this.velocity = velocity;
   }
-  
-  // End vertex shape
-  endShape();
+
+  updateParticle(){
+    // Multiply velocity by speed and add to position to update and move the particle
+    this.position.add(this.velocity.mult(speed));
+
+    // Calculate new velocity
+    let angle = perlinCustom(this.position.x, this.position.y) * noiseRotations;
+    this.velocity = createVector(cos(angle), sin(angle));
+
+    // Check if particle goes outside the window borders and reset position
+    if(this.position.x > windowWidth || this.position.x < 0 || this.position.y > windowHeight || this.position.y < 0) this.position = createVector(random(windowWidth), random(windowHeight));
+
+    fill(abs(this.velocity.x * 255), abs(this.velocity.y * 255), sin(millis() * 0.001) * 255)
+  }
+
+  displayParticle(){
+    circle(this.position.x, this.position.y, 2);
+  }
 }
 
-// p5.js setup function
+/*
+function squared(x){
+  return x * x;
+}
+
+function mix(x, y, z){
+  return x + (y - x) *z;
+}
+
+function coordFract(x, axis){
+  // return x;
+  return fract(x / axis) * axis;
+}
+*/
+
+function perlinCustom(x, y){
+  return noise(x * noiseScale, y * noiseScale, 0) * 2.0 - 1.0;
+}
+
 function setup(){
-  // Set canvas to use entire window
   createCanvas(windowWidth, windowHeight);
+
+  background(0, 0, 0, 255);
+
+  for(let i = 0; i < particles; i++){
+    particleList[i] = new particle(createVector(random(windowWidth), random(windowHeight)), createVector(-1, 0));
+  }
 }
 
-// p5.js draw function
+// Keeps window responsive
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
 function draw(){
-  // Calculate time per second
-  let secondTime = millis() * noiseSpeed;
-
-  // Set background
-  background(0, 0, 0, 255);
-  // Translate coordinates to center
-  translate(width * 0.5, height * 0.5);
-
-  // Set fill to none
-  noFill();
-  // Thicken stroke by 4
-  strokeWeight(4);
-
-  // Loop and calculate 8 lines for 3 bands of lines
-  for(let i = -2; i < 2; i++){
-    // Store wave size increment as a constant
-    const sizeIncrement = 1.0 + i / 4;
-
-    // Set red stroke color with transparency
-    stroke(255, 128, 0, 64);
-    flowLine(secondTime, sizeIncrement, 0, 0);
-
-    // Set blue stroke color with transparency
-    stroke(0, 128, 255, 64);
-    flowLine(secondTime, sizeIncrement, 111, 0);
-
-    // Set green stroke color with transparency
-    stroke(0, 255, 0, 64);
-    flowLine(secondTime, sizeIncrement, 977, 0);
+  background(0, 0, 0, 8);
+  noStroke();
+  
+  for(let i = 0; i < particleList.length; i++){
+    particleList[i].updateParticle();
+    particleList[i].displayParticle();
   }
-
-  // Reset stroke color
-  // stroke(0, 0, 0, 0);
-  // fpsCounter(0, height * 0.125, secondTime);
 }
