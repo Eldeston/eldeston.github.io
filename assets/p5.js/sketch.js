@@ -4,7 +4,7 @@ p5.disableFriendlyErrors = true;
 const speed = 4.0;
 const particles = 128;
 const noiseScale = 1 / 128;
-const noiseRotations = 4 * 3.1416;
+const noiseRotations = 3 * 3.1416;
 
 let particleList = [];
 
@@ -21,10 +21,10 @@ class particle{
     // Calculate new velocity
     let angle = perlinCustom(this.position.x, this.position.y) * noiseRotations;
     // Create a 2D vector and assign new velocity
-    this.velocity = createVector(Math.cos(angle), Math.sin(angle));
+    this.velocity = createVector(Math.sin(angle), Math.cos(angle));
 
     // Finally, color the particle according to current velocity and time
-    stroke(Math.abs(this.velocity.x) * 255, Math.abs(this.velocity.y) * 255, Math.cos(millis() * 0.0001) * 255)
+    stroke(Math.abs(this.velocity.x) * 255, Math.abs(this.velocity.y) * 255, Math.sin(millis() * 0.0001) * 255)
 
     // Check if particle goes outside the window borders and reset position
     if(this.position.x > windowWidth || this.position.x < 0 || this.position.y > windowHeight || this.position.y < 0) this.position = createVector(Math.random() * windowWidth, Math.random() * windowHeight);
