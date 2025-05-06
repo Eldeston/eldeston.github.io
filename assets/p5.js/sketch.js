@@ -21,7 +21,7 @@ class particle{
     this.velocity = createVector(cos(angle), sin(angle));
 
     // Finally, color the particle according to current velocity and time
-    fill(abs(this.velocity.x) * 255, abs(this.velocity.y) * 255, cos(millis() * 0.001) * 255)
+    stroke(abs(this.velocity.x) * 255, abs(this.velocity.y) * 255, cos(millis() * 0.001) * 255)
 
     // Check if particle goes outside the window borders and reset position
     if(this.position.x > windowWidth || this.position.x < 0 || this.position.y > windowHeight || this.position.y < 0) this.position = createVector(random(windowWidth), random(windowHeight));
@@ -29,7 +29,7 @@ class particle{
 
   displayParticle(){
     // Simply display the particle with a circle
-    circle(this.position.x, this.position.y, 2);
+    point(this.position.x, this.position.y);
   }
 }
 
@@ -71,8 +71,10 @@ function windowResized(){
 }
 
 function draw(){
+  noFill();
+  strokeWeight(4);
+
   background(0, 0, 0, 8);
-  noStroke();
   
   for(let i = 0; i < particleList.length; i++){
     particleList[i].updateParticle();
