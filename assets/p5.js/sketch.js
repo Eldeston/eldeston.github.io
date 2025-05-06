@@ -1,5 +1,5 @@
 const speed = 4.0;
-const particles = 256;
+const particles = 128;
 const noiseScale = 1 / 128;
 const noiseRotations = 1 * 3.1416;
 
@@ -17,15 +17,18 @@ class particle{
 
     // Calculate new velocity
     let angle = perlinCustom(this.position.x, this.position.y) * noiseRotations;
+    // Create a 2D vector and assign new velocity
     this.velocity = createVector(cos(angle), sin(angle));
+
+    // Finally, color the particle according to current velocity and time
+    fill(abs(this.velocity.x) * 255, abs(this.velocity.y) * 255, cos(millis() * 0.001) * 255)
 
     // Check if particle goes outside the window borders and reset position
     if(this.position.x > windowWidth || this.position.x < 0 || this.position.y > windowHeight || this.position.y < 0) this.position = createVector(random(windowWidth), random(windowHeight));
-
-    fill(abs(this.velocity.x * 255), abs(this.velocity.y * 255), sin(millis() * 0.001) * 255)
   }
 
   displayParticle(){
+    // Simply display the particle with a circle
     circle(this.position.x, this.position.y, 2);
   }
 }
@@ -50,17 +53,20 @@ function perlinCustom(x, y){
 }
 
 function setup(){
+  // Utilize full window size
   createCanvas(windowWidth, windowHeight);
 
+  // Set initial background black
   background(0, 0, 0, 255);
 
+  // Generate new particles first on setup
   for(let i = 0; i < particles; i++){
-    particleList[i] = new particle(createVector(random(windowWidth), random(windowHeight)), createVector(-1, 0));
+    particleList[i] = new particle(createVector(0, 0), createVector(-1, 0));
   }
 }
 
-// Keeps window responsive
-function windowResized() {
+function windowResized(){
+  // Keeps window responsive
   resizeCanvas(windowWidth, windowHeight);
 }
 
