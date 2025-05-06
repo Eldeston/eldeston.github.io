@@ -1,7 +1,7 @@
 const speed = 4.0;
 const particles = 128;
 const noiseScale = 1 / 128;
-const noiseRotations = 1 * 3.1416;
+const noiseRotations = 4 * 3.1416;
 
 let particleList = [];
 
@@ -29,8 +29,20 @@ class particle{
 
   displayParticle(){
     // Simply display the particle with a circle
+    // circle(this.position.x, this.position.y, 2);
     point(this.position.x, this.position.y);
   }
+}
+
+// FPS counter
+function fpsCounter(x, y){
+  let fps = frameRate();
+  let fpsG = 1.0 - exp(-fps * 0.125);
+  let fpsB = 1.0 - exp(-fps * 0.015625);
+
+  fill(255, fpsG * 255, fpsB * 255);
+  textAlign(CENTER);
+  text(fps, x, y);
 }
 
 /*
@@ -49,7 +61,7 @@ function coordFract(x, axis){
 */
 
 function perlinCustom(x, y){
-  return noise(x * noiseScale, y * noiseScale, 0) * 2.0 - 1.0;
+  return noise(x * noiseScale, y * noiseScale, 0);
 }
 
 function setup(){
@@ -80,4 +92,7 @@ function draw(){
     particleList[i].updateParticle();
     particleList[i].displayParticle();
   }
+
+  // noStroke();
+  // fpsCounter(windowWidth * 0.125, windowHeight * 0.125)
 }
