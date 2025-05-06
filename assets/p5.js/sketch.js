@@ -21,13 +21,13 @@ class particle{
     // Calculate new velocity
     let angle = perlinCustom(this.position.x, this.position.y) * noiseRotations;
     // Create a 2D vector and assign new velocity
-    this.velocity = createVector(cos(angle), sin(angle));
+    this.velocity = createVector(Math.cos(angle), Math.sin(angle));
 
     // Finally, color the particle according to current velocity and time
-    stroke(abs(this.velocity.x) * 255, abs(this.velocity.y) * 255, fract(millis() * 0.0001) * 255)
+    stroke(Math.abs(this.velocity.x) * 255, Math.abs(this.velocity.y) * 255, Math.cos(millis() * 0.0001) * 255)
 
     // Check if particle goes outside the window borders and reset position
-    if(this.position.x > windowWidth || this.position.x < 0 || this.position.y > windowHeight || this.position.y < 0) this.position = createVector(random(windowWidth), random(windowHeight));
+    if(this.position.x > windowWidth || this.position.x < 0 || this.position.y > windowHeight || this.position.y < 0) this.position = createVector(Math.random() * windowWidth, Math.random() * windowHeight);
   }
 
   displayParticle(){
@@ -40,8 +40,8 @@ class particle{
 // FPS counter
 function fpsCounter(x, y){
   let fps = frameRate();
-  let fpsG = 1.0 - exp(-fps * 0.125);
-  let fpsB = 1.0 - exp(-fps * 0.015625);
+  let fpsG = 1.0 - Math.exp(-fps * 0.125);
+  let fpsB = 1.0 - Math.exp(-fps * 0.015625);
 
   fill(255, fpsG * 255, fpsB * 255);
   textAlign(CENTER);
@@ -71,6 +71,8 @@ function setup(){
   // Utilize full window size
   createCanvas(windowWidth, windowHeight);
 
+  pixelDensity(2);
+
   // Set initial background black
   background(0, 0, 0, 255);
 
@@ -89,13 +91,13 @@ function draw(){
   noFill();
   strokeWeight(4);
 
-  background(0, 0, 0, 255);
+  background(0, 0, 0, 8);
   
   for(let i = 0; i < particleList.length; i++){
     particleList[i].updateParticle();
     particleList[i].displayParticle();
   }
 
-  noStroke();
-  fpsCounter(windowWidth * 0.125, windowHeight * 0.125)
+  // noStroke();
+  // fpsCounter(windowWidth * 0.125, windowHeight * 0.125)
 }
