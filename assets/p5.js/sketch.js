@@ -45,6 +45,7 @@ function fpsCounter(x, y){
 
   fill(255, fpsG * 255, fpsB * 255);
   textAlign(CENTER);
+  textSize(32);
   text(fps, x, y);
 }
 
@@ -70,8 +71,6 @@ function perlinCustom(x, y){
 function setup(){
   // Utilize full window size
   createCanvas(windowWidth, windowHeight);
-  // Reduce pixel density to improve performance
-  pixelDensity(0.25);
 
   // Set initial background black
   background(0, 0, 0, 255);
