@@ -71,7 +71,7 @@ function setup(){
   // Utilize full window size
   createCanvas(windowWidth, windowHeight);
   // Reduce pixel density to improve performance
-  pixelDensity(1.0);
+  pixelDensity(0.25);
 
   // Set initial background black
   background(0, 0, 0, 255);
