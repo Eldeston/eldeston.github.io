@@ -70,8 +70,8 @@ function perlinCustom(x, y){
 function setup(){
   // Utilize full window size
   createCanvas(windowWidth, windowHeight);
-
-  pixelDensity(2);
+  // Reduce pixel density to improve performance
+  pixelDensity(1.0);
 
   // Set initial background black
   background(0, 0, 0, 255);
