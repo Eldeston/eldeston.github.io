@@ -1,5 +1,5 @@
 const speed = 4.0;
-const particles = 1024;
+const particles = 256;
 const noiseScale = 1 / 128;
 const noiseRotations = 1 * 3.1416;
 
