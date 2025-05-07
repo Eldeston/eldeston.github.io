@@ -137,6 +137,7 @@ footer{
 }
 
 #imgContainer{
+    margin: 64px 0;
     width: fit-content;
 
     display: flex;
@@ -190,6 +191,7 @@ footer{
     margin: 64px 256px;
     padding: 64px;
 
+    overflow: hidden;
     border-radius: 16px;
 }
 
