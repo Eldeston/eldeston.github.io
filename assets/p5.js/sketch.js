@@ -2,7 +2,8 @@
 p5.disableFriendlyErrors = true;
 
 const speed = 4.0;
-const particles = 128;
+const particles = 1024;
+const particleSize = 0.5;
 const noiseScale = 1 / 128;
 const noiseRotations = 3 * 3.1416;
 
@@ -88,7 +89,7 @@ function windowResized(){
 
 function draw(){
   noFill();
-  strokeWeight(4);
+  strokeWeight(particleSize);
 
   background(0, 0, 0, 8);
   
