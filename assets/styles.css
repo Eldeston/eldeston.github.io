@@ -44,14 +44,15 @@
 
 /* Elements */
 
+/* Smooths scrolls the entire website */
 html{
     scroll-behavior: smooth;
 }
 
+/* Give body 0 margin, background color, and set default font to JetBrains */
 body{
     margin: 0;
 
-    overflow-x: hidden;
     font-family: 'JetBrains';
 
     background-color: var(--backGround);
@@ -70,38 +71,6 @@ nav{
     backdrop-filter: blur(8px);
 
     background-color: rgb(0, 0, 0, 0.25);
-}
-
-nav div a{
-    padding: 16px 16px;
-
-    text-decoration: none;
-
-    border-radius: 16px;
-
-    background: linear-gradient(45deg, rgba(0, 128, 255, 0) 0%, rgba(0, 128, 255, 0) 50%, rgba(0, 128, 255, 0.125) 67%, rgba(0, 128, 255, 0.25) 82%, rgba(0, 128, 255, 1) 100%);
-    background-size: 200%;
-    background-position: 0%;
-
-    transition: 0.5s;
-}
-
-nav div a:hover{
-    margin: 0 16px;
-
-    background-position: 100%;
-}
-
-nav a img{
-    margin: 0 16px;
-    
-    width: 96px;
-
-    transition: 1s;
-}
-
-nav a img:hover{
-    width: 128px;
 }
 
 h1, h2, p, a{
@@ -163,8 +132,6 @@ footer{
 }
 
 #theStudioContent h1{
-    font-size: 512%;
-
     background: linear-gradient(45deg, rgba(0, 0, 255, 1) 11%, rgba(0, 255, 255, 1) 100%);
     background-clip: text;
 
@@ -176,13 +143,14 @@ footer{
 }
 
 #tools{
-    width: 256px;
+    width: 25%;
+    height: 25%;
 }
 
 #socials{
     margin: 0 4px;
 
-    width: 32px;
+    width: 80%;
 }
 
 /* Classes */
@@ -196,6 +164,11 @@ footer{
 }
 
 .contentRow{
+    display: flex;
+    flex-direction: row;
+}
+
+.contentRowEven{
     display: flex;
     justify-content: space-between;
 }
@@ -220,4 +193,44 @@ footer{
     background-color: var(--foreGround);
 
     box-shadow: -2px -2px 2px rgb(0, 0, 0, 0.125) inset, 2px 2px 2px rgb(255, 255, 255, 0.125) inset;
+}
+
+.largeText{
+    margin: auto 12.5%;
+
+    font-size: 8rem;
+}
+
+/* Gradient Button */
+.gradientButton{
+    padding: 16px 16px;
+
+    text-decoration: none;
+
+    border-radius: 16px;
+
+    background: linear-gradient(45deg, rgba(0, 128, 255, 0) 0%, rgba(0, 128, 255, 0) 50%, rgba(0, 128, 255, 0.125) 67%, rgba(0, 128, 255, 0.25) 82%, rgba(0, 128, 255, 1) 100%);
+    background-size: 200%;
+    background-position: 0%;
+
+    transition: 0.5s;
+}
+
+.gradientButton:hover{
+    margin: 0 16px;
+
+    background-position: 100%;
+}
+
+/* Logo */
+.logoMain{
+    margin: 0 16px;
+    
+    width: 96px;
+
+    transition: 1s;
+}
+
+.logoMain:hover{
+    width: 128px;
 }

@@ -16,17 +16,17 @@
 
         <nav>
             <div>
-                <a href="/">🏠 Home<span class="cursorBlink">_</span></a>
-                <a href="#projects">🖼️ Projects<span class="cursorBlink">_</span></a>
-                <a href="#professions">💻 Professions<span class="cursorBlink">_</span></a>
+                <a class="gradientButton" href="/">🏠 Home<span class="cursorBlink">_</span></a>
+                <a class="gradientButton" href="#projects">🖼️ Projects<span class="cursorBlink">_</span></a>
+                <a class="gradientButton" href="#professions">💻 Professions<span class="cursorBlink">_</span></a>
             </div>
 
-            <a href="#theStudio"><img src="assets/logo.svg" alt="It's free real estate."></a>
+            <a href="#theStudio"><img class="logoMain" src="assets/logo.svg" alt="It's free real estate."></a>
 
             <div>
-                <a href="#community">🌐 Community<span class="cursorBlink">_</span></a>
-                <a href="#software">🎥 Software<span class="cursorBlink">_</span></a>
-                <a href="#subscribe">❤️ Subscribe<span class="cursorBlink">_</span></a>
+                <a class="gradientButton" href="#community">🌐 Community<span class="cursorBlink">_</span></a>
+                <a class="gradientButton" href="#software">🎥 Software<span class="cursorBlink">_</span></a>
+                <a class="gradientButton" href="#subscribe">❤️ Subscribe<span class="cursorBlink">_</span></a>
             </div>
         </nav>
 
@@ -48,6 +48,8 @@
 
         <div class="window glassEffect" id="projects">
             <img src="assets/media/superDuperVanilla.png" alt="It's free real estate." width="100%">
+            <img src="https://img.shields.io/curseforge/dt/534748?style=for-the-badge&logo=curseforge&logoColor=%23FFFFFF&label=CurseForge%20Downloads&color=%23FF9101" alt="It's free real estate.">
+            <img src="https://img.shields.io/modrinth/dt/LMIZZNxZ?style=for-the-badge&logo=modrinth&logoColor=%23FFFFFF&label=Modrinth%20Downloads&color=%2300FF00" alt="It's free real estate.">
 
             <h1>🖼️ Projects<span class="cursorBlink">_</span></h1>
 
@@ -82,7 +84,7 @@
         
             <div id="theStudioContent">
                 <img src="assets/logo.svg" alt="It's free real estate.">
-                <h1>FlameRender© Studios</h1>
+                <h1 class="largeText">FlameRender© Studios</h1>
             </div>
         </div>
 
@@ -100,7 +102,7 @@
         <div class="window glassEffect" id="software">
             <h1>🎥 Software<span class="cursorBlink">_</span></h1>
             <p>Here are some of the software I use to develop my projects. I prefer to use freeware for most programs or professional programs with no subscription services.</p>
-            <div class="contentRow">
+            <div class="contentRowEven">
                 <img id="tools" src="assets/media/icons/DaVinci.png" alt="It's free real estate.">
                 <img id="tools" src="assets/media/icons/Figma.png" alt="It's free real estate.">
                 <img id="tools" src="assets/media/icons/Obsidian.png" alt="It's free real estate.">
@@ -111,10 +113,18 @@
         <div class="window glassEffect" id="subscribe">
             <h1>❤️ Subscribe<span class="cursorBlink">_</span></h1>
             <p>Subscribe to stay tuned to my blog posts, new project releases, and updates from FlameRender© Studios!</p>
+            <div class="contentRow">
+                <img id="tools" src="assets/media/icons/platform/Modrinth.svg" alt="It's free real estate.">
+                <h1 class="largeText">Modrinth</h1>
+            </div>
+            <div class="contentRow">
+                <img id="tools" src="assets/media/icons/platform/CurseForge.svg" alt="It's free real estate.">
+                <h1 class="largeText">CurseForge</h1>
+            </div>
         </div>
 
         <footer class="glassEffect">
-            <div class="contentRow">
+            <div class="contentRowEven">
                 <div>
                     <h2>Information<span class="cursorBlink">_</span></h2>
                     <p>Site made by @eldeston</p>
@@ -124,7 +134,7 @@
     
                 <div>
                     <h2>Contacts<span class="cursorBlink">_</span></h2>
-                    <div class="contentRow">
+                    <div class="contentRowEven">
                         <a href="https://www.youtube.com/@eldeston" target="_blank"><img id="socials" src="assets/media/icons/socialMedia/YouTube.svg" alt="It's free real estate."></a>
                         <a href="https://www.linkedin.com/in/frem-patalinghug-407ba5353" target="_blank"><img id="socials" src="assets/media/icons/socialMedia/LinkedIn.svg" alt="It's free real estate."></a>
                         <a href="https://x.com/eldeston" target="_blank"><img id="socials" src="assets/media/icons/socialMedia/X Negative.svg" alt="It's free real estate."></a>
@@ -136,7 +146,7 @@
 
             <hr>
 
-            <div class="contentRow">
+            <div class="contentRowEven">
                 <p class="footerContent">2025 FlameRender© Studios, All Rights Reserved</p>
                 <p class="footerContent">Graphics powered by p5.js</p>
             </div>
