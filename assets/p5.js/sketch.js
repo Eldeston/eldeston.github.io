@@ -3,7 +3,7 @@ p5.disableFriendlyErrors = true;
 
 const speed = 4.0;
 const particles = 1024;
-const particleSize = 0.5;
+const particleSize = 1;
 const noiseScale = 1 / 128;
 const noiseRotations = 3 * 3.1416;
 
