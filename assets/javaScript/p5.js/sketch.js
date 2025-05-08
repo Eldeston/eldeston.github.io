@@ -5,8 +5,9 @@ const speed = 4.0;
 const particles = 1024;
 const particleSize = 2;
 const noiseScale = 1 / 128;
-const noiseRotations = 3 * 3.1416;
+const noiseRotations = 3 * Math.PI;
 
+let currTime = 0;
 let particleList = [];
 
 class particle{
@@ -19,8 +20,6 @@ class particle{
     // Multiply velocity by speed and add to position to update and move the particle
     this.position.add(this.velocity.mult(speed));
 
-    // Calculate time to animate noise
-    let currTime = millis() * 0.0001;
     // Calculate new velocity vector based on perlin noise
     let angle = noise(this.position.x * noiseScale, this.position.y * noiseScale, currTime) * noiseRotations;
     // Create a 2D vector and assign new velocity
@@ -63,6 +62,8 @@ function windowResized(){
 }
 
 function draw(){
+  // Calculate time per frame and not per particle to save performance
+  currTime = millis() * 0.0001;
   // Set alpha to 8 to create trails
   background(0, 0, 0, 8);
   

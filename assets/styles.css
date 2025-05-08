@@ -12,6 +12,16 @@
     src: url(JetBrainsMono-Regular.ttf);
 }
 
+@keyframes fadeIn{
+    from{
+        opacity: 0%;
+    }
+
+    to{
+        opacity: 100%;
+    }
+}
+
 @keyframes widthAnim{
     from{
         width: 0%;
@@ -98,11 +108,9 @@ footer{
 
 #greetings{
     width: 0;
-    
-    overflow: hidden;
     white-space: nowrap;
 
-    animation: widthAnim 3s steps(40) forwards;
+    /* animation: widthAnim 3s steps(40) forwards; */
 }
 
 #imgContainer{
@@ -179,6 +187,7 @@ footer{
 
 .mainContent{
     margin: 64px 0;
+    padding: 0;
 
     height: 512px;
     display: flex;
