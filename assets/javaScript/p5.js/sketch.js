@@ -2,7 +2,7 @@
 p5.disableFriendlyErrors = true;
 
 const speed = 4.0;
-const particles = 1024;
+const particles = 8196;
 const particleSize = 2;
 const noiseScale = 1 / 128;
 const noiseRotations = 3 * Math.PI;
@@ -12,6 +12,7 @@ let particleList = [];
 
 class particle{
   constructor(position, velocity){
+    // Upon construction of variable, store variables to this class
     this.position = position;
     this.velocity = velocity;
   }
@@ -23,7 +24,7 @@ class particle{
     // Calculate new velocity vector based on perlin noise
     let angle = noise(this.position.x * noiseScale, this.position.y * noiseScale, currTime) * noiseRotations;
     // Create a 2D vector and assign new velocity
-    this.velocity = createVector(Math.sin(angle), Math.cos(angle));
+    this.velocity.set(Math.sin(angle), Math.cos(angle));
 
     // Finally, color the particle according to current velocity and time
     stroke(Math.abs(this.velocity.x) * 255, Math.abs(this.velocity.y) * 255, Math.sin(currTime) * 255);
@@ -66,7 +67,7 @@ function draw(){
   currTime = millis() * 0.0001;
   // Set alpha to 8 to create trails
   background(0, 0, 0, 8);
-  
+
   // Load, update, and display particles
   for(let i = 0; i < particleList.length; i++){
     particleList[i].updateParticle();

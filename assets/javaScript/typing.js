@@ -1,44 +1,11 @@
-/* Dynamic typewriter animation, better than using the CSS method and works for all texts */
-
-/*
-// Sleep function using Promise
-function sleep(ms){
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-// Main typing function
-async function typing(){
-    // Store current text as a constant first
-    const elements = document.getElementsByClassName('typing');
-
-    for(let x = 0; x < elements.length; x++){
-        // Get selected element
-        const currText = elements[x].innerHTML;
-
-        // Clear text
-        document.getElementsByClassName('typing')[x].innerHTML = '';
-
-        // Use a loop to loop through all the characters in the current text
-        for(let y = 0; y < currText.length; y++){
-            // Add the next character
-            document.getElementsByClassName('typing')[x].innerHTML += currText[y];
-
-            // Set a delay for 0.25 second and offset timings for all elements
-            await sleep(125);
-        }
-    }
-}
-
-// Execute function
-typing();
-*/
+/* Dynamic typewriter animation, better than using the CSS method and works for all elements */
 
 // Function for typing effect
 function startTyping(element){
     // Store text before clearing
-    const currText = element.innerHTML;
+    const currText = element.textContent;
     // Empty string
-    element.innerHTML = "";
+    element.textContent = "";
     // Record current iteration
     let iterations = 0;
 
@@ -48,7 +15,7 @@ function startTyping(element){
         if(iterations >= currText.length) return;
 
         // Add the next character
-        element.innerHTML += currText[iterations];
+        element.textContent += currText[iterations];
 
         // Iterate
         iterations++;
@@ -57,11 +24,12 @@ function startTyping(element){
         setTimeout(typing, 62.5);
     }
 
-    // Call function after a set delay
+    // Call function after 500ms
     setTimeout(typing, 500);
 }
 
 // Create intersection observer
+// This is also faster than using onScroll because onScroll fires the script multiple times
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         // Simply return when intersection has not been made
