@@ -9,17 +9,14 @@ function startTyping(element){
     // Record current iteration
     let iterations = 0;
 
-    // Declare a new function
+    // Declare a recursive function
     function typing(){
         // If conditions are met, exit function
         if(iterations >= currText.length) return;
-
         // Add the next character
         element.textContent += currText[iterations];
-
-        // Iterate
+        // Iterate for the next character
         iterations++;
-
         // Call the function again after 62.5ms
         setTimeout(typing, 62.5);
     }
@@ -29,7 +26,8 @@ function startTyping(element){
 }
 
 // Create intersection observer
-// This is also faster than using onScroll because onScroll fires the script multiple times
+// This is also faster than using onScroll
+// The onScroll fires the script multiple times while the observer can be fired once
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         // Simply return when intersection has not been made

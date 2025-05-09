@@ -2,7 +2,7 @@
 p5.disableFriendlyErrors = true;
 
 const speed = 4.0;
-const particles = 8196;
+const particles = 1024;
 const particleSize = 2;
 const noiseScale = 1 / 128;
 const noiseRotations = 3 * Math.PI;
@@ -35,7 +35,6 @@ class particle{
 
   displayParticle(){
     // Simply display the particle with a point
-    // circle(this.position.x, this.position.y, 2);
     point(this.position.x, this.position.y);
   }
 }
