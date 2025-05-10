@@ -1,10 +1,3 @@
-/* Root */
-
-:root{
-    --backGround: black;
-    --foreGround: rgb(128, 128, 128, 0.0625);
-}
-
 /* Miscs */
 
 @font-face{
@@ -12,33 +5,13 @@
     src: url(JetBrainsMono-Regular.ttf);
 }
 
-@keyframes fadeIn{
+@keyframes alphaAnim{
     from{
         opacity: 0%;
     }
 
     to{
         opacity: 100%;
-    }
-}
-
-@keyframes widthAnim{
-    from{
-        width: 0%;
-    }
-
-    to{
-        width: 100%;
-    }
-}
-
-@keyframes alphaAnim{
-    from{
-        color: transparent;
-    }
-
-    to{
-        color: white;
     }
 }
 
@@ -65,7 +38,7 @@ body{
 
     font-family: 'JetBrains';
 
-    background-color: var(--backGround);
+    background-color: black;
 }
 
 nav{
@@ -75,17 +48,16 @@ nav{
 
     z-index: 1;
     display: flex;
-    position: fixed;
+    position: sticky;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(8px);
-
-    background-color: rgb(0, 0, 0, 0.25);
 }
 
 h1, h2, p, a{
     color: white;
+}
 
+a{
     text-decoration: none;
 }
 
@@ -98,8 +70,8 @@ footer{
 #sketchP5{
     top: 0;
 
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
 
     position: fixed;
 
@@ -109,8 +81,6 @@ footer{
 #greetings{
     width: 0;
     white-space: nowrap;
-
-    /* animation: widthAnim 3s steps(40) forwards; */
 }
 
 #imgContainer{
@@ -164,7 +134,7 @@ footer{
 /* Classes */
 
 .window{
-    margin: 64px 256px;
+    margin: 6.25vh 12.5vw;
     padding: 64px;
 
     overflow: hidden;
@@ -186,10 +156,7 @@ footer{
 }
 
 .mainContent{
-    margin: 64px 0;
-    padding: 0;
-
-    height: 512px;
+    height: 50vh;
     display: flex;
 
     align-items: center;
@@ -197,9 +164,9 @@ footer{
 }
 
 .glassEffect{
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(16px);
 
-    background-color: var(--foreGround);
+    background-color: rgb(0, 0, 0, 0.03125);
 
     box-shadow: -2px -2px 2px rgb(0, 0, 0, 0.125) inset, 2px 2px 2px rgb(255, 255, 255, 0.125) inset;
 }

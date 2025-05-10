@@ -27,7 +27,7 @@ class particle{
     this.velocity.set(Math.sin(angle), Math.cos(angle));
 
     // Finally, color the particle according to current velocity and time
-    stroke(Math.abs(this.velocity.x) * 255, Math.abs(this.velocity.y) * 255, Math.sin(currTime) * 255);
+    stroke(Math.abs(this.velocity.x) * 255, Math.abs(this.velocity.y) * 255, Math.sin(currTime) * 128 + 128);
 
     // Check if particle goes outside the window borders and reset position
     if(this.position.x > windowWidth || this.position.x < 0 || this.position.y > windowHeight || this.position.y < 0) this.position = createVector(Math.random() * windowWidth, Math.random() * windowHeight);
@@ -42,9 +42,6 @@ class particle{
 function setup(){
   // Utilize full window size
   createCanvas(windowWidth, windowHeight);
-  // Set initial background black
-  background(0, 0, 0, 255);
-
   // Set stroke thickness
   strokeWeight(particleSize);
   // Don't use fill
@@ -63,7 +60,7 @@ function windowResized(){
 
 function draw(){
   // Calculate time per frame and not per particle to save performance
-  currTime = millis() * 0.0001;
+  currTime = millis() * 0.000125;
   // Set alpha to 8 to create trails
   background(0, 0, 0, 8);
 

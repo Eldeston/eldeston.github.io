@@ -22,7 +22,7 @@ function startTyping(element){
     }
 
     // Call function after 500ms
-    setTimeout(typing, 500);
+    setTimeout(typing, 1000);
 }
 
 // Create intersection observer
