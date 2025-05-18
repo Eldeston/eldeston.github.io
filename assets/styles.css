@@ -63,67 +63,78 @@ a{
 /* Semantic elements */
 
 nav{
+    /* For some reason, a lof of the elemonts have top set for them */
     top: 0;
-
+    /* Makes sure the nave bar stretches from left to right */
     width: 100%;
 
+    /* Keeps navbar in front of all the elements since it's sticky */
     z-index: 1;
-    display: flex;
+    /* Makes navbar sticky for navigation purposes */
     position: sticky;
+
+    /* Changes display to flex for more control on the layout */
+    display: flex;
     align-items: center;
     justify-content: center;
 
+    /* Bottom emboss shadow effect */
     box-shadow: 0 -2px 2px rgb(0, 0, 0, 0.25) inset;
 }
 
 header{
+    /* Instead of giving margin or padding, increase the flex box height relative to the screen's height */
     height: 50vh;
-    display: flex;
 
+    /* Changes display to flex for more control on the layout */
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
 section{
-    margin: 6.25vh 12.5vw;
-    padding: 6.25vh;
+    margin: 6.25% 12.5%;
+    padding: 6.25%;
 
+    /* Keeps content inside the section */
     overflow: hidden;
     border-radius: 16px;
 
+    /* Full emboss effect */
     box-shadow: 2px 2px 2px rgb(255, 255, 255, 0.25) inset, -2px -2px 2px rgb(0, 0, 0, 0.25) inset;
 }
 
 footer{
-    padding: 6.25vh 12.5vw;
+    padding: 6.25% 12.5%;
 
+    /* Top emboss highlight effect */
     box-shadow: 0 2px 2px rgb(255, 255, 255, 0.25) inset;
 }
 
 /* ---------------------------------------------------------------- IDs ---------------------------------------------------------------- */
 
 #sketchP5{
+    /* For some reason, a lof of the elemonts have top set for them */
     top: 0;
-
+    /* Ensures the full screen is utilized by p5.js */
     width: 100vw;
     height: 100vh;
 
+    /* Keeps background behind all the elements since it's sticky */
+    z-index: -1;
+    /* Keep background sticky */
     position: fixed;
 
+    /* Remove the default border used by iframe */
     border: none;
-
-    z-index: -1;
 }
 
-#greetings{
-    width: 0;
-    white-space: nowrap;
-}
-
+/* For the animated carousel */
 #imgContainer{
     margin: 64px 0;
     width: fit-content;
 
+    /* Changes display to flex for more control on the layout */
     display: flex;
     flex-direction: row;
     justify-content: center;
