@@ -1,10 +1,12 @@
 /* ---------------------------------------------------------------- Miscs ---------------------------------------------------------------- */
 
+/* For custom font */
 @font-face{
     font-family: 'JetBrains';
     src: url(JetBrainsMono-Regular.ttf);
 }
 
+/* Smoothes the blinking cursor */
 @keyframes alphaAnim{
     from{
         opacity: 0%;
@@ -15,6 +17,7 @@
     }
 }
 
+/* For gallery carousel */
 @keyframes galleryLoop{
     from{
         translate: 0 0;
@@ -94,7 +97,7 @@ header{
 
 section{
     margin: 6.25% 12.5%;
-    padding: 6.25%;
+    padding: 3.125%;
 
     /* Keeps content inside the section */
     overflow: hidden;
@@ -113,6 +116,23 @@ footer{
 
 /* ---------------------------------------------------------------- IDs ---------------------------------------------------------------- */
 
+#me{
+    margin: 0 16px;
+}
+
+/* Logo hover animation */
+#logoMain{
+    margin: 0 16px;
+    width: 96px;
+
+    transition: 1s;
+}
+
+#logoMain:hover{
+    width: 128px;
+}
+
+/* For displaying p5.js graphics using iframes */
 #sketchP5{
     /* For some reason, a lof of the elemonts have top set for them */
     top: 0;
@@ -147,9 +167,10 @@ footer{
 }
 
 #theStudioContent{
+    /* Changes display to flex for more control on the layout */
     display: flex;
-    justify-content: center;
     flex-direction: row;
+    justify-content: center;
 }
 
 #theStudioContent img{
@@ -163,10 +184,6 @@ footer{
     background-clip: text;
 
     color: transparent;
-}
-
-#me{
-    margin: 0 16px;
 }
 
 /* ---------------------------------------------------------------- Classes ---------------------------------------------------------------- */
@@ -226,17 +243,4 @@ footer{
 .tools{
     width: 25%;
     height: 25%;
-}
-
-/* Logo */
-.logoMain{
-    margin: 0 16px;
-    
-    width: 96px;
-
-    transition: 1s;
-}
-
-.logoMain:hover{
-    width: 128px;
 }
