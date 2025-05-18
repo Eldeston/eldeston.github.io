@@ -48,6 +48,20 @@ body{
     background-color: black;
 }
 
+/* Text elements */
+
+h1, h2, p, a{
+    /* Sets text color to white */
+    color: white;
+}
+
+a{
+    /* Sets text decoration for anchors (links) to none */
+    text-decoration: none;
+}
+
+/* Semantic elements */
+
 nav{
     top: 0;
 
@@ -60,12 +74,20 @@ nav{
     justify-content: center;
 }
 
-h1, h2, p, a{
-    color: white;
+header{
+    height: 50vh;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
 }
 
-a{
-    text-decoration: none;
+section{
+    margin: 6.25vh 12.5vw;
+    padding: 6.25vh;
+
+    overflow: hidden;
+    border-radius: 16px;
 }
 
 footer{
@@ -81,6 +103,8 @@ footer{
     height: 100vh;
 
     position: fixed;
+
+    border: none;
 
     z-index: -1;
 }
@@ -128,17 +152,6 @@ footer{
     margin: 0 16px;
 }
 
-#tools{
-    width: 25%;
-    height: 25%;
-}
-
-#socials{
-    margin: 0 4px;
-
-    width: 80%;
-}
-
 /* ---------------------------------------------------------------- Classes ---------------------------------------------------------------- */
 
 /* Common */
@@ -159,22 +172,6 @@ footer{
 
 .embossFull{
     box-shadow: 2px 2px 2px rgb(255, 255, 255, 0.25) inset, -2px -2px 2px rgb(0, 0, 0, 0.25) inset;
-}
-
-.window{
-    margin: 6.25vh 12.5vw;
-    padding: 6.25vh;
-
-    overflow: hidden;
-    border-radius: 16px;
-}
-
-.mainContent{
-    height: 50vh;
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
 }
 
 .gradientButton{
@@ -217,6 +214,17 @@ footer{
     margin: auto 12.5%;
 
     font-size: 8rem;
+}
+
+.socials{
+    margin: 0 4px;
+
+    width: 80%;
+}
+
+.tools{
+    width: 25%;
+    height: 25%;
 }
 
 /* Logo */
