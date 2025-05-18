@@ -1,13 +1,16 @@
 // Disables friendly error to increase performance
 p5.disableFriendlyErrors = true;
 
-const speed = 4.0;
-const particles = 1024;
-const particleSize = 2;
-const noiseScale = 1 / 128;
+const particles = 4096;
+const particleSize = 1;
+const particleSpeed = 2.0;
+
+const noiseSpeed = 0.03125;
+const noiseScale = 1 / 512;
 const noiseRotations = 3 * Math.PI;
 
 let currTime = 0;
+let timeSine = 0;
 let particleList = [];
 
 class particle{
@@ -18,8 +21,8 @@ class particle{
   }
 
   updateParticle(){
-    // Multiply velocity by speed and add to position to update and move the particle
-    this.position.add(this.velocity.mult(speed));
+    // Multiply velocity by particleSpeed and add to position to update and move the particle
+    this.position.add(this.velocity.mult(particleSpeed));
 
     // Calculate new velocity vector based on perlin noise
     let angle = noise(this.position.x * noiseScale, this.position.y * noiseScale, currTime) * noiseRotations;
@@ -27,10 +30,10 @@ class particle{
     this.velocity.set(Math.sin(angle), Math.cos(angle));
 
     // Finally, color the particle according to current velocity and time
-    stroke(Math.abs(this.velocity.x) * 255, Math.abs(this.velocity.y) * 255, Math.sin(currTime) * 128 + 128);
+    stroke(Math.abs(this.velocity.x) * 255, Math.abs(this.velocity.y) * 255, timeSine);
 
     // Check if particle goes outside the window borders and reset position
-    if(this.position.x > windowWidth || this.position.x < 0 || this.position.y > windowHeight || this.position.y < 0) this.position = createVector(Math.random() * windowWidth, Math.random() * windowHeight);
+    if(this.position.x > width || this.position.x < 0 || this.position.y > height || this.position.y < 0) this.position.set(Math.random() * width, Math.random() * height);
   }
 
   displayParticle(){
@@ -60,7 +63,10 @@ function windowResized(){
 
 function draw(){
   // Calculate time per frame and not per particle to save performance
-  currTime = millis() * 0.000125;
+  currTime = millis() * 0.001 * noiseSpeed;
+  // Calculate sine wave with time per frame
+  timeSine = Math.sin(currTime) * 128 + 128;
+
   // Set alpha to 8 to create trails
   background(0, 0, 0, 8);
 

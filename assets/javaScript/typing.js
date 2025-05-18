@@ -22,7 +22,7 @@ function startTyping(element){
     }
 
     // Call function after 500ms
-    setTimeout(typing, 1000);
+    setTimeout(typing, 500);
 }
 
 // Create intersection observer
@@ -37,6 +37,7 @@ const observer = new IntersectionObserver(entries => {
         // Stop observing once started
         observer.unobserve(entry.target);
     });
+// This sets theshold to execute the function when 50% of the element is in view
 }, { threshold: 0.5 });
 
 // Observe all elements with the 'typing' class
