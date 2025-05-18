@@ -27,17 +27,24 @@
 
 /* ---------------------------------------------------------------- Elements ---------------------------------------------------------------- */
 
-/* Smooths scrolls the entire website */
 html{
+    /* Ensures no add margin or padding is added */
+    margin: 0;
+    padding: 0;
+
+    /* Smoothes the scroll behavior */
     scroll-behavior: smooth;
 }
 
-/* Give body 0 margin, background color, and set default font to JetBrains */
 body{
+    /* Ensures no add margin or padding is added */
     margin: 0;
+    padding: 0;
 
+    /* Use my favorite font (the superior font) JetBrains */
     font-family: 'JetBrains';
 
+    /* Background set to black */
     background-color: black;
 }
 
