@@ -58,7 +58,20 @@ h1, h2, p, a{
     color: white;
 }
 
+h1{
+    font-size: 2vw;
+}
+
+h2{
+    font-size: 1.5vw;
+}
+
+p{
+    font-size: 1vw;
+}
+
 a{
+    font-size: 1vw;
     /* Sets text decoration for anchors (links) to none */
     text-decoration: none;
 }
@@ -86,8 +99,8 @@ nav{
 }
 
 header{
-    /* Instead of giving margin or padding, increase the flex box height relative to the screen's height */
-    height: 50vh;
+    /* Give a margin equal to 1/8 of the screen height */
+    margin: 12.5vh 0;
 
     /* Changes display to flex for more control on the layout */
     display: flex;
@@ -96,7 +109,7 @@ header{
 }
 
 section{
-    margin: 6.25% 12.5%;
+    margin: 3.125% 12.5%;
     padding: 3.125%;
 
     /* Keeps content inside the section */
@@ -108,7 +121,7 @@ section{
 }
 
 footer{
-    padding: 6.25% 12.5%;
+    padding: 3.125% 12.5%;
 
     /* Top emboss highlight effect */
     box-shadow: 0 2px 2px rgb(255, 255, 255, 0.25) inset;
@@ -117,19 +130,20 @@ footer{
 /* ---------------------------------------------------------------- IDs ---------------------------------------------------------------- */
 
 #me{
-    margin: 0 16px;
+    margin: 0 3.125%;
+    width: 12.5vw;
 }
 
 /* Logo hover animation */
 #logoMain{
     margin: 0 16px;
-    width: 96px;
+    width: 6vw;
 
     transition: 1s;
 }
 
 #logoMain:hover{
-    width: 128px;
+    width: 9vw;
 }
 
 /* For displaying p5.js graphics using iframes */
@@ -151,7 +165,7 @@ footer{
 
 /* For the animated carousel */
 #imgContainer{
-    margin: 64px 0;
+    margin: 3.125% 0;
     width: fit-content;
 
     /* Changes display to flex for more control on the layout */
@@ -166,27 +180,21 @@ footer{
     width: 50%;
 }
 
-#theStudioContent{
-    /* Changes display to flex for more control on the layout */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-#theStudioContent img{
-    margin: 0 1%;
-    width: 25%;
-}
-
-#theStudioContent h1{
-    margin: 0;
+#textGradient{
+    /* Sets the background using a linear gradient */
     background: linear-gradient(45deg, rgba(0, 0, 255, 1) 11%, rgba(0, 255, 255, 1) 100%);
+    /* This clips the background inside the text */
     background-clip: text;
 
+    /* Makes the element transparent to reveal the background */
     color: transparent;
 }
 
 /* ---------------------------------------------------------------- Classes ---------------------------------------------------------------- */
+
+.cursorBlink{
+    animation: alphaAnim 1s infinite;
+}
 
 .glassEffect{
     backdrop-filter: blur(16px);
@@ -195,7 +203,7 @@ footer{
 }
 
 .gradientButton{
-    padding: 16px 16px;
+    padding: 1vw;
 
     text-decoration: none;
 
@@ -214,33 +222,47 @@ footer{
     background-position: 100%;
 }
 
-.cursorBlink{
-    animation: alphaAnim 1s infinite;
+.displayContent{
+    /* Changes display to flex for more control on the layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.displayContentLogo{
+    margin: 0 2vw;
+    width: 12.5vw;
+}
+
+.displayContentText{
+    font-size: 3.125vw;
+}
+
+.youTubeEmbed{
+    width: 64vh;
+    height: 36vh;
+    border: none;
 }
 
 .contentRow{
+    /* Changes display to flex for more control on the layout */
     display: flex;
     flex-direction: row;
 }
 
 .contentRowEven{
+    /* Changes display to flex for more control on the layout */
     display: flex;
     justify-content: space-between;
 }
 
-.largeText{
-    margin: auto 12.5%;
-
-    font-size: 8rem;
-}
-
 .socials{
-    margin: 0 4px;
-
-    width: 80%;
+    margin: 0 8px;
+    width: 3.125vw;
+    height: auto;
 }
 
 .tools{
-    width: 25%;
-    height: 25%;
+    width: 12.5vw;
+    height: auto;
 }
